@@ -53,14 +53,19 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../../../serverfiles.cpp \
 		../../src/project.cpp \
-		../../src/root.cpp moc_project.cpp \
-		moc_root.cpp
+		../../src/root.cpp \
+		../../src/monitor.cpp moc_project.cpp \
+		moc_root.cpp \
+		moc_monitor.cpp
 OBJECTS       = serverfiles.o \
 		project.o \
 		root.o \
+		monitor.o \
 		moc_project.o \
-		moc_root.o
+		moc_root.o \
+		moc_monitor.o
 DIST          = ../../root/embed.html \
+		../../root/monitor/patients.html \
 		../../root/qml/main.qml \
 		../../root/static/js/qmlweb.es2015.js \
 		../../root/static/js/qmlweb.js \
@@ -77,6 +82,7 @@ DIST          = ../../root/embed.html \
 		../../root/static/js/qmlweb.parser.min.js.map \
 		../../root/static/js/qt.js.map \
 		../../root/static/js/qt.min.js.map \
+		../../root/qml/PatientsView.qml \
 		/home/hoggb/Qt5.9/5.9/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/hoggb/Qt5.9/5.9/gcc_64/mkspecs/common/unix.conf \
 		/home/hoggb/Qt5.9/5.9/gcc_64/mkspecs/common/linux.conf \
@@ -258,9 +264,11 @@ DIST          = ../../root/embed.html \
 		/home/server-files.pro ../../../serverfiles.h \
 		../../../server-files_global.h \
 		../../src/project.h \
-		../../src/root.h ../../../serverfiles.cpp \
+		../../src/root.h \
+		../../src/monitor.h ../../../serverfiles.cpp \
 		../../src/project.cpp \
-		../../src/root.cpp
+		../../src/root.cpp \
+		../../src/monitor.cpp
 QMAKE_TARGET  = server-files
 DESTDIR       = 
 TARGET        = libserver-files.so.1.0.0
@@ -667,8 +675,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /home/hoggb/Qt5.9/5.9/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../../serverfiles.h ../../../server-files_global.h ../../src/project.h ../../src/root.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../../../serverfiles.cpp ../../src/project.cpp ../../src/root.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../../serverfiles.h ../../../server-files_global.h ../../src/project.h ../../src/root.h ../../src/monitor.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../../serverfiles.cpp ../../src/project.cpp ../../src/root.cpp ../../src/monitor.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -700,9 +708,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /home/hoggb/Qt5.9/5.9/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -Wall -W -dM -E -o moc_predefs.h /home/hoggb/Qt5.9/5.9/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_project.cpp moc_root.cpp
+compiler_moc_header_make_all: moc_project.cpp moc_root.cpp moc_monitor.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_project.cpp moc_root.cpp
+	-$(DEL_FILE) moc_project.cpp moc_root.cpp moc_monitor.cpp
 moc_project.cpp: /home/hoggb/cutelyst/Cutelyst/Application \
 		/home/hoggb/cutelyst/Cutelyst/application.h \
 		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/QObject \
@@ -868,6 +876,98 @@ moc_root.cpp: /home/hoggb/cutelyst/Cutelyst/Controller \
 		/home/hoggb/Qt5.9/5.9/gcc_64/bin/moc
 	/home/hoggb/Qt5.9/5.9/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/hoggb/Qt5.9/5.9/gcc_64/mkspecs/linux-g++ -I/home/hoggb/tutorial/server-files -I/home/hoggb/cutelyst -I/home/hoggb/Qt5.9/5.9/gcc_64/include -I/home/hoggb/Qt5.9/5.9/gcc_64/include/QtNetwork -I/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../../src/root.h -o moc_root.cpp
 
+moc_monitor.cpp: /home/hoggb/cutelyst/Cutelyst/Controller \
+		/home/hoggb/cutelyst/Cutelyst/controller.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/QObject \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qobject.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qnamespace.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qglobal.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qconfig.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qtcore-config.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qsysinfo.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qlogging.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qflags.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qatomic.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qmutex.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qnumeric.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qversiontagging.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qstring.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qchar.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qbytearray.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qrefcount.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qarraydata.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qlist.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qalgorithms.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qiterator.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qpair.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qstringlist.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qregexp.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qcoreevent.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qmetatype.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qobject_impl.h \
+		/home/hoggb/cutelyst/Cutelyst/cutelyst_global.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/QtGlobal \
+		/home/hoggb/cutelyst/Cutelyst/action.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/QStringList \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/QMetaMethod \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qmetaobject.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qvariant.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qmap.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qdebug.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qhash.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qtextstream.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qiodevice.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qlocale.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qshareddata.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qvector.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qpoint.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qset.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/hoggb/cutelyst/Cutelyst/component.h \
+		/home/hoggb/cutelyst/Cutelyst/context.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/QVariant \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/QUrl \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qurl.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qurlquery.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/QStack \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qstack.h \
+		/home/hoggb/cutelyst/Cutelyst/request.h \
+		/home/hoggb/cutelyst/Cutelyst/paramsmultimap.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/QMap \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/QString \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/QMetaType \
+		/home/hoggb/cutelyst/Cutelyst/headers.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/QDateTime \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qdatetime.h \
+		/home/hoggb/cutelyst/Cutelyst/response.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/QIODevice \
+		../../src/monitor.h \
+		moc_predefs.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/bin/moc
+	/home/hoggb/Qt5.9/5.9/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/hoggb/Qt5.9/5.9/gcc_64/mkspecs/linux-g++ -I/home/hoggb/tutorial/server-files -I/home/hoggb/cutelyst -I/home/hoggb/Qt5.9/5.9/gcc_64/include -I/home/hoggb/Qt5.9/5.9/gcc_64/include/QtNetwork -I/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../../src/monitor.h -o moc_monitor.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
 compiler_yacc_decl_make_all:
@@ -991,15 +1091,19 @@ project.o: ../../src/project.cpp ../../src/project.h \
 		/home/hoggb/cutelyst/Cutelyst/headers.h \
 		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/QDateTime \
 		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qdatetime.h \
-		../../src/root.h \
+		/home/hoggb/cutelyst/Cutelyst/Plugins/View/Grantlee/grantleeview.h \
+		/home/hoggb/cutelyst/Cutelyst/View \
+		/home/hoggb/cutelyst/Cutelyst/view.h \
+		/home/hoggb/cutelyst/Cutelyst/component.h \
+		../../src/monitor.h \
 		/home/hoggb/cutelyst/Cutelyst/Controller \
 		/home/hoggb/cutelyst/Cutelyst/controller.h \
 		/home/hoggb/cutelyst/Cutelyst/action.h \
 		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/QMetaMethod \
 		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qmetaobject.h \
-		/home/hoggb/cutelyst/Cutelyst/component.h \
 		/home/hoggb/cutelyst/Cutelyst/response.h \
-		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/QIODevice
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/QIODevice \
+		../../src/root.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o project.o ../../src/project.cpp
 
 root.o: ../../src/root.cpp ../../src/root.h \
@@ -1092,11 +1196,104 @@ root.o: ../../src/root.cpp ../../src/root.h \
 		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/QIODevice
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o root.o ../../src/root.cpp
 
+monitor.o: ../../src/monitor.cpp ../../src/monitor.h \
+		/home/hoggb/cutelyst/Cutelyst/Controller \
+		/home/hoggb/cutelyst/Cutelyst/controller.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/QObject \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qobject.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qnamespace.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qglobal.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qconfig.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qtcore-config.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qsysinfo.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qlogging.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qflags.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qatomic.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qmutex.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qnumeric.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qversiontagging.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qstring.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qchar.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qbytearray.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qrefcount.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qarraydata.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qlist.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qalgorithms.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qiterator.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qpair.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qstringlist.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qregexp.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qcoreevent.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qmetatype.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qobject_impl.h \
+		/home/hoggb/cutelyst/Cutelyst/cutelyst_global.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/QtGlobal \
+		/home/hoggb/cutelyst/Cutelyst/action.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/QStringList \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/QMetaMethod \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qmetaobject.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qvariant.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qmap.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qdebug.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qhash.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qtextstream.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qiodevice.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qlocale.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qshareddata.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qvector.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qpoint.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qset.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/hoggb/cutelyst/Cutelyst/component.h \
+		/home/hoggb/cutelyst/Cutelyst/context.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/QVariant \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/QUrl \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qurl.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qurlquery.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/QStack \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qstack.h \
+		/home/hoggb/cutelyst/Cutelyst/request.h \
+		/home/hoggb/cutelyst/Cutelyst/paramsmultimap.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/QMap \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/QString \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/QMetaType \
+		/home/hoggb/cutelyst/Cutelyst/headers.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/QDateTime \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/qdatetime.h \
+		/home/hoggb/cutelyst/Cutelyst/response.h \
+		/home/hoggb/Qt5.9/5.9/gcc_64/include/QtCore/QIODevice
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o monitor.o ../../src/monitor.cpp
+
 moc_project.o: moc_project.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_project.o moc_project.cpp
 
 moc_root.o: moc_root.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_root.o moc_root.cpp
+
+moc_monitor.o: moc_monitor.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_monitor.o moc_monitor.cpp
 
 ####### Install
 

@@ -28,6 +28,7 @@ SOURCES += \
         serverfiles.cpp \
         project/src/project.cpp \
         project/src/root.cpp \
+        project/src/monitor.cpp
 
 
 
@@ -36,6 +37,7 @@ HEADERS += \
         server-files_global.h \
         project/src/project.h \
         project/src/root.h \
+        project/src/monitor.h
 
 
 
@@ -71,6 +73,7 @@ LIBS += -Lhome/hoggb/cutelyst/build/Cutelyst -lCutelyst2Qt5 \
 
 DISTFILES += \
     project/root/embed.html \
+    project/root/monitor/patients.html \
     project/root/qml/main.qml \
     project/root/static/js/qmlweb.es2015.js \
     project/root/static/js/qmlweb.js \
@@ -86,4 +89,5 @@ DISTFILES += \
     project/root/static/js/qmlweb.parser.js.map \
     project/root/static/js/qmlweb.parser.min.js.map \
     project/root/static/js/qt.js.map \
-    project/root/static/js/qt.min.js.map
+    project/root/static/js/qt.min.js.map \
+    project/root/qml/PatientsView.qml
