@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.11
 
 
 
@@ -22,24 +22,35 @@ Item{
         id: c1
         Repeater{
             model: returnDummyData().length;
-            Rectangle{
-                width: rootItem.width; height: rootItem.height / returnDummyData().length;
-                color: "transparent"
-                border.width: 5
+//            Rectangle{
+//                width: rootItem.width; height: rootItem.height / returnDummyData().length;
+//                color: "transparent"
+//                border.width: 5
 
-                Text{
-                    anchors.centerIn: parent;
-                    text: rootItem.returnDummyData()[index]["name"]
-                           +  " " + rootItem.returnDummyData()[index]["number"]
+//                Text{
+//                    anchors.centerIn: parent;
+//                    text: rootItem.returnDummyData()[index]["name"]
+//                           +  " " + rootItem.returnDummyData()[index]["number"]
 
-                }
+//                }
+//            }
+
+            Text{
+                //width: rootItem.width
+                height: 50
+
+                text: rootItem.returnDummyData()[index]["name"]
+                       +  " " + rootItem.returnDummyData()[index]["number"]
+                font.pointSize: 40;
             }
 
 
         }
+
     }
 
 
 
-
 }
+
+
