@@ -90,4 +90,5 @@ DISTFILES += \
     project/root/static/js/qmlweb.parser.min.js.map \
     project/root/static/js/qt.js.map \
     project/root/static/js/qt.min.js.map \
-    project/root/qml/PatientsView.qml
+    project/root/qml/PatientsView.qml \
+    project/root/static/images/Arbitrary_Waveform_1.jpg
