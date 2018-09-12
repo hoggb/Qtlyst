@@ -66,6 +66,7 @@ OBJECTS       = serverfiles.o \
 		moc_monitor.o
 DIST          = ../../root/embed.html \
 		../../root/monitor/patients.html \
+		../../root/monitor/patient.html \
 		../../root/qml/main.qml \
 		../../root/static/js/qmlweb.es2015.js \
 		../../root/static/js/qmlweb.js \
@@ -83,6 +84,9 @@ DIST          = ../../root/embed.html \
 		../../root/static/js/qt.js.map \
 		../../root/static/js/qt.min.js.map \
 		../../root/qml/PatientsView.qml \
+		../../root/static/images/Arbitrary_Waveform_1.jpg \
+		../../root/qml/dummydata.js \
+		../../root/qml/PatientView.qml \
 		/home/hoggb/Qt5.9/5.9/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/hoggb/Qt5.9/5.9/gcc_64/mkspecs/common/unix.conf \
 		/home/hoggb/Qt5.9/5.9/gcc_64/mkspecs/common/linux.conf \

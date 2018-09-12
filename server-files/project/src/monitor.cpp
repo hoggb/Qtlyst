@@ -1,5 +1,6 @@
 #include "monitor.h"
 
+
 using namespace Cutelyst;
 
 Monitor::Monitor(QObject *parent) : Controller(parent)
@@ -16,11 +17,22 @@ void Monitor::index(Context *c)
 }
 
 
-void Monitor::patients(Context *c)
+void Monitor::patients(Context *c, const QString &id)
 {
 
-    c->stash({
-                 {"username", "Bret"},
-                 {"template", "monitor/patients.html"}
-             });
+    if(id != ""){
+        c->stash({
+                     {"ID", id},
+                     {"template", "monitor/patient.html"}
+                 });
+    }
+
+    if(id == ""){
+        c->stash({
+                         {"template", "monitor/patients.html"}
+        });
+    }
+
 }
+
+

@@ -74,6 +74,7 @@ LIBS += -Lhome/hoggb/cutelyst/build/Cutelyst -lCutelyst2Qt5 \
 DISTFILES += \
     project/root/embed.html \
     project/root/monitor/patients.html \
+    project/root/monitor/patient.html \
     project/root/qml/main.qml \
     project/root/static/js/qmlweb.es2015.js \
     project/root/static/js/qmlweb.js \
@@ -91,4 +92,6 @@ DISTFILES += \
     project/root/static/js/qt.js.map \
     project/root/static/js/qt.min.js.map \
     project/root/qml/PatientsView.qml \
-    project/root/static/images/Arbitrary_Waveform_1.jpg
+    project/root/static/images/Arbitrary_Waveform_1.jpg \
+    project/root/qml/dummydata.js \
+    project/root/qml/PatientView.qml

@@ -16,8 +16,16 @@ public:
     void index(Context *c);
 
     C_ATTR(patients, :Local)
-    void patients(Context *c);
+    void patients(Context *c, const QString &id);
+
+
+private:
+    C_ATTR(End, :ActionClass("RenderView"))
+    void End(Context *c) { Q_UNUSED(c); }
 };
+
+
+
 
 #endif //MONITOR_H
 
