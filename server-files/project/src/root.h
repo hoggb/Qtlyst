@@ -13,6 +13,7 @@ public:
     explicit Root(QObject *parent = 0);
     ~Root();
 
+
     C_ATTR(index, :Path :AutoArgs)
     void index(Context *c);
 
@@ -21,6 +22,7 @@ public:
 
     C_ATTR(hello, :Global :AutoArgs)
     void hello(Context *c);
+
 
 private:
     C_ATTR(End, :ActionClass("RenderView"))

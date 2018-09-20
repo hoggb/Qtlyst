@@ -1,9 +1,13 @@
 import QtQuick 2.11
+import QtQuick.Controls 1.4
 import "dummydata.js" as Patients
 
 
 Item{
     id: rootItem
+
+
+
 
     Column{
         id: c1
@@ -39,6 +43,8 @@ Item{
                 MouseArea{
                     anchors.fill: container
                     onClicked: {Patients.getRequest("localhost:3000", "monitor/patients", Patients.returnDummyData()[index]["id"].toString())}
+                    onEntered: container.color = "blue"
+                    onExited: container.color = "black"
                 }
             }
 
@@ -82,6 +88,8 @@ Item{
                 MouseArea{
                     anchors.fill: container2
                     onClicked: {Patients.getRequest("localhost:3000", "monitor/patients", Patients.returnDummyData()[index+Patients.returnDummyData().length / 2]["id"].toString())}
+                    onEntered: container2.color = "blue"
+                    onExited: container2.color = "black"
                 }
             }
 

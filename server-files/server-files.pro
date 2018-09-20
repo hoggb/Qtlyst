@@ -4,7 +4,9 @@
 #
 #-------------------------------------------------
 
-QT       += network
+QT       += network \
+            sql \
+            core
 
 QT       -= gui
 
@@ -94,4 +96,5 @@ DISTFILES += \
     project/root/qml/PatientsView.qml \
     project/root/static/images/Arbitrary_Waveform_1.jpg \
     project/root/qml/dummydata.js \
-    project/root/qml/PatientView.qml
+    project/root/qml/PatientView.qml \
+    project/root/static/js/DOMtests.js

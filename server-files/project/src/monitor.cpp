@@ -1,5 +1,6 @@
 #include "monitor.h"
-
+#include <QtSql>
+#include <Cutelyst/Plugins/Utils/Sql/sql.h>
 
 using namespace Cutelyst;
 
@@ -28,6 +29,10 @@ void Monitor::patients(Context *c, const QString &id)
     }
 
     if(id == ""){
+//        QSqlQuery query = CPreparedSqlQueryThreadForDB("SELECT * FROM book", "MyDB");
+//        if (query.exec()) {
+//            c->setStash("books", Sql::queryToHashList(query));
+//        }
         c->stash({
                          {"template", "monitor/patients.html"}
         });

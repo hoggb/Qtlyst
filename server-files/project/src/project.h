@@ -14,6 +14,9 @@ public:
     ~project();
 
     bool init();
+
+    virtual bool postFork() override;
+
 };
 
 #endif //PROJECT_H

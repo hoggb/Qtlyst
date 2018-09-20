@@ -5,6 +5,7 @@
     <title>QML Embed Example</title>
 
     <script src="../static/js/qmlweb.js"></script>
+    <script src="../static/js/DOMtests.js"></script>
     <style>
       #embed {
         width: 100%;
@@ -21,13 +22,20 @@
     <div id="embed" >
     </div>
     <script>
+      var engine;
       (function() {
         var div = document.getElementById('embed');
-        var engine = new QmlWeb.QMLEngine(div);
+        engine = new QmlWeb.QMLEngine(div);
         engine.loadFile('../qml/PatientsView.qml'); // see also engine.loadQML
         engine.start();
         console.log(engine.rootObject);
       })();
-    </script>
+
+      //load patient data from patient database object which is stashed in our c++ code
+      {% for patient in patients %}
+        console.log("test");
+        document.getElementsByClassName("Text")[0].childNodes[0].innerHTML = "Name: " + {{patient.name}} + "\nId: " + {{patient.id}};
+      {% endfor %}
+  </script>
   </body>
 </html>
