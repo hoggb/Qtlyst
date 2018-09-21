@@ -1,6 +1,4 @@
-# Project Title
-
-Qtlyst (Cutelyst && QMLWeb)
+# Qtlyst (Cutelyst && QMLWeb)
 
 ## Getting Started
 
