@@ -43,13 +43,25 @@ Another thing that might be worth checking if there are issues setting up is in
 main.cpp.  This is where we are running our cutelyst server, so it'll be worth
 checking that /usr/bin/cutelyst2 is a legitimate process on your machine.  And
 while we are in main.cpp it is also worth noting the limitations of this commit.
-Up until commit on (9/18/18), output is not being properly piped from
+Up until commit on (9/19/18), output is not being properly piped from
 the cutelyst server process to qtcreator.  This is fixed in the most recent
 commit (with limitations on live feedback).
 
-Also, as of the most recent commit (9/18/18) all of the LIBS dependencies in
+Also, as of the most recent commit (9/19/18) all of the LIBS dependencies in
 server-files.pro are system dependent, so please change those to your personal cutelyst
 installation directory.
 
 The "QMLWeb working" commit should now show "hello" at localhost:3000/hello in
 the browser when running AppRunner.
+
+### Running
+
+The most recent commit implements a REST-like HTTP architecture.  We will find
+the meat of the application as of now at localhost:3000/monitor/patients.
+This is what a URL should look like for a GET request that views a list.
+If we click on a particular patient we will be redirected to a url like
+localhost:3000/monitor/patients/{patient_id}.  As of now, the unique ID is simple,
+but ideally we would have some secure and unique UUID for each patient.
+A sqlite database is used to fetch patient data, and uses the {patient_id}
+argument as a value for lookup across HTTP requests, so we know we are displaying
+the correct patient.     

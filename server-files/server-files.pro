@@ -48,30 +48,28 @@ unix {
     INSTALLS += target
 }
 
+#Set this to your cutelyst path
+CUTELYST_PATH=/home/hoggb/cutelyst
+
 #So QtCreator doesn't complain about not finding dependencies
-INCLUDEPATH += /home/hoggb/cutelyst \
-               #/usr/bin/x86_64-linux-gnu
+INCLUDEPATH += $${CUTELYST_PATH} \
 
 
-LIBS += -Lhome/hoggb/cutelyst/build/Cutelyst -lCutelyst2Qt5 \
-        #-L/home/hoggb/cutelyst/build/grantlee/5.1 -lgrantlee_cutelyst \
-        -Lhome/hoggb/cutelyst/build/EventLoopEPoll -lCutelyst2Qt5EventLoopEpoll \
-        -Lhome/hoggb/cutelyst/build/Cutelyst/Plugins/View/Grantlee -lCutelyst2Qt5ViewGrantlee \
-        -Lhome/hoggb/cutelyst/build/Cutelyst/Plugins/View/JSON -lCutelyst2Qt5ViewJson \
-        -Lhome/hoggb/cutelyst/build/Cutelyst/Plugins/View/ClearSilver -lCutelyst2Qt5ViewClearSilver \
-        -Lhome/hoggb/cutelyst/build/Cutelyst/Plugins/Authentication -lCutelyst2Qt5Authentication \
-        -Lhome/hoggb/cutelyst/build/Cutelyst/Plugins/StatusMessage -lCutelyst2Qt5StatusMessage \
-        -Lhome/hoggb/cutelyst/build/Cutelyst/Plugins/Utils/Validator -lCutelyst2Qt5UtilsValidator \
-        -Lhome/hoggb/cutelyst/build/Cutelyst/Plugins/Utils/Sql -lCutelyst2Qt5UtilsSql \
-        -Lhome/hoggb/cutelyst/build/Cutelyst/Plugins/Utils/Pagination -lCutelyst2Qt5UtilsPagination \
-        -Lhome/hoggb/cutelyst/build/Cutelyst/Plugins/Utils/LangSelect -lCutelyst2Qt5UtilsLangSelect \
-        -Lhome/hoggb/cutelyst/build/Cutelyst/Plugins/Session -lCutelyst2Qt5Session \
-        -Lhome/hoggb/cutelyst/build/Cutelyst/Plugins/StaticSimple -lCutelyst2Qt5StaticSimple \
-        -Lhome/hoggb/cutelyst/build/Cutelyst -lCutelyst2Qt5 \
-        #-Lhome/hoggb/cutelyst/build/Cutelyst/Actions/RenderView -lActionRenderView \
-        #-Lhome/hoggb/cutelyst/build/Cutelyst/Actions/REST -lActionREST \
-        #-Lhome/hoggb/cutelyst/build/Cutelyst/Actions/RoleACL -lActionRoleACL \
-        -Lhome/hoggb/cutelyst/build/wsgi -lCutelyst2Qt5Wsgi \
+LIBS += -L$${CUTELYST_PATH}/build/Cutelyst -lCutelyst2Qt5 \
+        -L$${CUTELYST_PATH}/build/EventLoopEPoll -lCutelyst2Qt5EventLoopEpoll \
+        -L$${CUTELYST_PATH}/build/Cutelyst/Plugins/View/Grantlee -lCutelyst2Qt5ViewGrantlee \
+        -L$${CUTELYST_PATH}/build/Cutelyst/Plugins/View/JSON -lCutelyst2Qt5ViewJson \
+        -L$${CUTELYST_PATH}/build/Cutelyst/Plugins/View/ClearSilver -lCutelyst2Qt5ViewClearSilver \
+        -L$${CUTELYST_PATH}/build/Cutelyst/Plugins/Authentication -lCutelyst2Qt5Authentication \
+        -L$${CUTELYST_PATH}/build/Cutelyst/Plugins/StatusMessage -lCutelyst2Qt5StatusMessage \
+        -L$${CUTELYST_PATH}/build/Cutelyst/Plugins/Utils/Validator -lCutelyst2Qt5UtilsValidator \
+        -L$${CUTELYST_PATH}/build/Cutelyst/Plugins/Utils/Sql -lCutelyst2Qt5UtilsSql \
+        -L$${CUTELYST_PATH}/build/Cutelyst/Plugins/Utils/Pagination -lCutelyst2Qt5UtilsPagination \
+        -L$${CUTELYST_PATH}/build/Cutelyst/Plugins/Utils/LangSelect -lCutelyst2Qt5UtilsLangSelect \
+        -L$${CUTELYST_PATH}/build/Cutelyst/Plugins/Session -lCutelyst2Qt5Session \
+        -L$${CUTELYST_PATH}/build/Cutelyst/Plugins/StaticSimple -lCutelyst2Qt5StaticSimple \
+        -L$${CUTELYST_PATH}/build/Cutelyst -lCutelyst2Qt5 \
+        -L$${CUTELYST_PATH}/build/wsgi -lCutelyst2Qt5Wsgi \
 
 DISTFILES += \
     project/root/embed.html \

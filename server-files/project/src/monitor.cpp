@@ -22,22 +22,28 @@ void Monitor::patients(Context *c, const QString &id)
 {
 
     if(id != ""){
-        c->stash({
-                     {"ID", id},
-                     {"template", "monitor/patient.html"}
-                 });
-    }
+        QSqlQuery query = CPreparedSqlQueryThreadForDB("SELECT * FROM patient WHERE id = :patientid;", "MyDB");
+        query.bindValue(":patientid", id);
 
-    if(id == ""){
-//        QSqlQuery query = CPreparedSqlQueryThreadForDB("SELECT * FROM book", "MyDB");
-//        if (query.exec()) {
-//            c->setStash("books", Sql::queryToHashList(query));
-//        }
+        if (query.exec()) {
+            c->setStash("patients", Sql::queryToHashList(query));
+        }
+
         c->stash({
-                         {"template", "monitor/patients.html"}
+            {"template", "monitor/patient.html"}
         });
     }
 
+    if(id == ""){
+        QSqlQuery query = CPreparedSqlQueryThreadForDB("SELECT * FROM patient;", "MyDB");
+        if (query.exec()) {
+            c->setStash("patients", Sql::queryToHashList(query));
+        }
+
+        c->stash({
+            {"template", "monitor/patients.html"}
+        });
+    }
 }
 
 

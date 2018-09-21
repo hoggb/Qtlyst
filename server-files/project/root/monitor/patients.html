@@ -32,9 +32,12 @@
       })();
 
       //load patient data from patient database object which is stashed in our c++ code
+      var x = 0;
       {% for patient in patients %}
-        console.log("test");
-        document.getElementsByClassName("Text")[0].childNodes[0].innerHTML = "Name: " + {{patient.name}} + "\nId: " + {{patient.id}};
+        document.getElementsByClassName("Text")[x].childNodes[0].innerHTML = "Name: {{patient.name}}" + "\nId: {{patient.id}}";
+        x = x + 1;
+        console.log("{{patient.name}}");
+        console.log("{{patient.id}}");
       {% endfor %}
   </script>
   </body>

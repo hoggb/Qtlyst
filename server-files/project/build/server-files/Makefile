@@ -38,7 +38,7 @@ DISTNAME      = server-files1.0.0
 DISTDIR = /home/hoggb/tutorial/server-files/project/build/server-files/.tmp/server-files1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/home/hoggb/Qt5.9.5/5.9.5/gcc_64/lib -shared -Wl,-soname,libserver-files.so.1
-LIBS          = $(SUBLIBS) -Lhome/hoggb/cutelyst/build/Cutelyst -Lhome/hoggb/cutelyst/build/EventLoopEPoll -lCutelyst2Qt5EventLoopEpoll -Lhome/hoggb/cutelyst/build/Cutelyst/Plugins/View/Grantlee -lCutelyst2Qt5ViewGrantlee -Lhome/hoggb/cutelyst/build/Cutelyst/Plugins/View/JSON -lCutelyst2Qt5ViewJson -Lhome/hoggb/cutelyst/build/Cutelyst/Plugins/View/ClearSilver -lCutelyst2Qt5ViewClearSilver -Lhome/hoggb/cutelyst/build/Cutelyst/Plugins/Authentication -lCutelyst2Qt5Authentication -Lhome/hoggb/cutelyst/build/Cutelyst/Plugins/StatusMessage -lCutelyst2Qt5StatusMessage -Lhome/hoggb/cutelyst/build/Cutelyst/Plugins/Utils/Validator -lCutelyst2Qt5UtilsValidator -Lhome/hoggb/cutelyst/build/Cutelyst/Plugins/Utils/Sql -lCutelyst2Qt5UtilsSql -Lhome/hoggb/cutelyst/build/Cutelyst/Plugins/Utils/Pagination -lCutelyst2Qt5UtilsPagination -Lhome/hoggb/cutelyst/build/Cutelyst/Plugins/Utils/LangSelect -lCutelyst2Qt5UtilsLangSelect -Lhome/hoggb/cutelyst/build/Cutelyst/Plugins/Session -lCutelyst2Qt5Session -Lhome/hoggb/cutelyst/build/Cutelyst/Plugins/StaticSimple -lCutelyst2Qt5StaticSimple -lCutelyst2Qt5 -Lhome/hoggb/cutelyst/build/wsgi -lCutelyst2Qt5Wsgi -L/home/hoggb/Qt5.9.5/5.9.5/gcc_64/lib -lQt5Network -lQt5Sql -lQt5Core -lpthread 
+LIBS          = $(SUBLIBS) -L/home/hoggb/cutelyst/build/Cutelyst -L/home/hoggb/cutelyst/build/EventLoopEPoll -lCutelyst2Qt5EventLoopEpoll -L/home/hoggb/cutelyst/build/Cutelyst/Plugins/View/Grantlee -lCutelyst2Qt5ViewGrantlee -L/home/hoggb/cutelyst/build/Cutelyst/Plugins/View/JSON -lCutelyst2Qt5ViewJson -L/home/hoggb/cutelyst/build/Cutelyst/Plugins/View/ClearSilver -lCutelyst2Qt5ViewClearSilver -L/home/hoggb/cutelyst/build/Cutelyst/Plugins/Authentication -lCutelyst2Qt5Authentication -L/home/hoggb/cutelyst/build/Cutelyst/Plugins/StatusMessage -lCutelyst2Qt5StatusMessage -L/home/hoggb/cutelyst/build/Cutelyst/Plugins/Utils/Validator -lCutelyst2Qt5UtilsValidator -L/home/hoggb/cutelyst/build/Cutelyst/Plugins/Utils/Sql -lCutelyst2Qt5UtilsSql -L/home/hoggb/cutelyst/build/Cutelyst/Plugins/Utils/Pagination -lCutelyst2Qt5UtilsPagination -L/home/hoggb/cutelyst/build/Cutelyst/Plugins/Utils/LangSelect -lCutelyst2Qt5UtilsLangSelect -L/home/hoggb/cutelyst/build/Cutelyst/Plugins/Session -lCutelyst2Qt5Session -L/home/hoggb/cutelyst/build/Cutelyst/Plugins/StaticSimple -lCutelyst2Qt5StaticSimple -lCutelyst2Qt5 -L/home/hoggb/cutelyst/build/wsgi -lCutelyst2Qt5Wsgi -L/home/hoggb/Qt5.9.5/5.9.5/gcc_64/lib -lQt5Network -lQt5Sql -lQt5Core -lpthread 
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -1285,6 +1285,7 @@ project.o: ../../src/project.cpp ../../src/project.h \
 		/home/hoggb/Qt5.9.5/5.9.5/gcc_64/include/QtSql/qsqltablemodel.h \
 		/home/hoggb/Qt5.9.5/5.9.5/gcc_64/include/QtSql/qsqlresult.h \
 		/home/hoggb/Qt5.9.5/5.9.5/gcc_64/include/QtSql/qtsqlversion.h \
+		/home/hoggb/cutelyst/Cutelyst/Plugins/Utils/Sql/Sql \
 		/home/hoggb/cutelyst/Cutelyst/Plugins/Utils/Sql/sql.h \
 		/home/hoggb/Qt5.9.5/5.9.5/gcc_64/include/QtSql/QSqlDatabase \
 		../../src/monitor.h \

@@ -7,8 +7,6 @@ Item{
     id: rootItem
 
 
-
-
     Column{
         id: c1
         Repeater{
@@ -27,8 +25,8 @@ Item{
                     anchors.centerIn: parent;
                     color: "red"
                     font.bold: true
-                    text: "Name: " + Patients.returnDummyData()[index]["name"]
-                           +  "\nId: " + Patients.returnDummyData()[index]["id"]
+                    text: "Name: "
+                           +  "\nId: "
                 }
 
                 Image{
@@ -42,7 +40,7 @@ Item{
 
                 MouseArea{
                     anchors.fill: container
-                    onClicked: {Patients.getRequest("localhost:3000", "monitor/patients", Patients.returnDummyData()[index]["id"].toString())}
+                    onClicked: {Patients.getRequest("localhost:3000", "monitor/patients", index + 1)}
                     onEntered: container.color = "blue"
                     onExited: container.color = "black"
                 }
@@ -71,8 +69,8 @@ Item{
                     anchors.centerIn: parent;
                     color: "red"
                     font.bold: true
-                    text: "Name: " + Patients.returnDummyData()[index+Patients.returnDummyData().length / 2]["name"]
-                           +  "\nId: " + Patients.returnDummyData()[index+Patients.returnDummyData().length / 2]["id"]
+                    text: "Name: "
+                           +  "\nId: "
 
                 }
 
@@ -87,7 +85,7 @@ Item{
 
                 MouseArea{
                     anchors.fill: container2
-                    onClicked: {Patients.getRequest("localhost:3000", "monitor/patients", Patients.returnDummyData()[index+Patients.returnDummyData().length / 2]["id"].toString())}
+                    onClicked: {Patients.getRequest("localhost:3000", "monitor/patients", index + 4 + 1)}
                     onEntered: container2.color = "blue"
                     onExited: container2.color = "black"
                 }

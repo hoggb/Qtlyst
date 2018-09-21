@@ -33,8 +33,11 @@
 
 
       //get ID that was passed to the url
-      var id = {{ID}};
-      var name = returnByID(id);
+      {% for patient in patients %}
+        var id = "{{patient.id}}";
+        var name = "{{patient.name}}";
+      {% endfor %}
+
       document.getElementsByClassName("Text")[0].childNodes[0].innerHTML = "Name: " + name + "\nId: " + id;
     </script>
   </body>

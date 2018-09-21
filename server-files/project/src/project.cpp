@@ -34,7 +34,7 @@ bool project::init()
 bool project::postFork()
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE", Sql::databaseNameThread("MyDB"));
-    db.setDatabaseName("patientdata.db");
+    db.setDatabaseName("/home/hoggb/tutorial/server-files/project/src/patientdata.db");
     db.setConnectOptions("foreign_keys = ON");
     if (!db.open()) {
         qCritical() << "Failed to open database:" << db.lastError().text();
