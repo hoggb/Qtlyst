@@ -95,4 +95,6 @@ DISTFILES += \
     project/root/static/images/Arbitrary_Waveform_1.jpg \
     project/root/qml/dummydata.js \
     project/root/qml/PatientView.qml \
-    project/root/static/js/DOMtests.js
+    project/root/static/js/DOMtests.js \
+    project/root/qml/TrendsView.qml \
+    project/root/monitor/trends.html

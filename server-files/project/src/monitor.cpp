@@ -17,6 +17,13 @@ void Monitor::index(Context *c)
     c->response()->body() = "Matched Controller::Monitor in Monitor.";
 }
 
+void Monitor::trends(Context *c)
+{
+    c->stash({
+        {"template", "monitor/trends.html"}
+    });
+}
+
 
 void Monitor::patients(Context *c, const QString &id)
 {

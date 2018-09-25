@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Monitor_t {
-    QByteArrayData data[11];
-    char stringdata0[93];
+    QByteArrayData data[13];
+    char stringdata0[113];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,17 +36,20 @@ QT_MOC_LITERAL(1, 8, 5), // "index"
 QT_MOC_LITERAL(2, 14, 14), // ":Path:AutoArgs"
 QT_MOC_LITERAL(3, 29, 8), // "patients"
 QT_MOC_LITERAL(4, 38, 6), // ":Local"
-QT_MOC_LITERAL(5, 45, 3), // "End"
-QT_MOC_LITERAL(6, 49, 28), // ":ActionClass(\"RenderView\")"
-QT_MOC_LITERAL(7, 76, 0), // ""
-QT_MOC_LITERAL(8, 77, 8), // "Context*"
-QT_MOC_LITERAL(9, 86, 1), // "c"
-QT_MOC_LITERAL(10, 88, 2) // "id"
+QT_MOC_LITERAL(5, 45, 6), // "trends"
+QT_MOC_LITERAL(6, 52, 12), // ":Path:Global"
+QT_MOC_LITERAL(7, 65, 3), // "End"
+QT_MOC_LITERAL(8, 69, 28), // ":ActionClass(\"RenderView\")"
+QT_MOC_LITERAL(9, 96, 0), // ""
+QT_MOC_LITERAL(10, 97, 8), // "Context*"
+QT_MOC_LITERAL(11, 106, 1), // "c"
+QT_MOC_LITERAL(12, 108, 2) // "id"
 
     },
     "Monitor\0index\0:Path:AutoArgs\0patients\0"
-    ":Local\0End\0:ActionClass(\"RenderView\")\0"
-    "\0Context*\0c\0id"
+    ":Local\0trends\0:Path:Global\0End\0"
+    ":ActionClass(\"RenderView\")\0\0Context*\0"
+    "c\0id"
 };
 #undef QT_MOC_LITERAL
 
@@ -55,8 +58,8 @@ static const uint qt_meta_data_Monitor[] = {
  // content:
        7,       // revision
        0,       // classname
-       3,   14, // classinfo
-       3,   20, // methods
+       4,   14, // classinfo
+       4,   22, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -67,16 +70,19 @@ static const uint qt_meta_data_Monitor[] = {
        1,    2,
        3,    4,
        5,    6,
+       7,    8,
 
  // methods: name, argc, parameters, tag, flags
-       1,    1,   35,    7, 0x02 /* Public */,
-       3,    2,   38,    7, 0x02 /* Public */,
-       5,    1,   43,    7, 0x00 /* Private */,
+       1,    1,   42,    9, 0x02 /* Public */,
+       3,    2,   45,    9, 0x02 /* Public */,
+       5,    1,   50,    9, 0x02 /* Public */,
+       7,    1,   53,    9, 0x00 /* Private */,
 
  // methods: parameters
-    QMetaType::Void, 0x80000000 | 8,    9,
-    QMetaType::Void, 0x80000000 | 8, QMetaType::QString,    9,   10,
-    QMetaType::Void, 0x80000000 | 8,    9,
+    QMetaType::Void, 0x80000000 | 10,   11,
+    QMetaType::Void, 0x80000000 | 10, QMetaType::QString,   11,   12,
+    QMetaType::Void, 0x80000000 | 10,   11,
+    QMetaType::Void, 0x80000000 | 10,   11,
 
        0        // eod
 };
@@ -89,7 +95,8 @@ void Monitor::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         switch (_id) {
         case 0: _t->index((*reinterpret_cast< Context*(*)>(_a[1]))); break;
         case 1: _t->patients((*reinterpret_cast< Context*(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2]))); break;
-        case 2: _t->End((*reinterpret_cast< Context*(*)>(_a[1]))); break;
+        case 2: _t->trends((*reinterpret_cast< Context*(*)>(_a[1]))); break;
+        case 3: _t->End((*reinterpret_cast< Context*(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -110,6 +117,13 @@ void Monitor::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
             }
             break;
         case 2:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+            case 0:
+                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< Context* >(); break;
+            }
+            break;
+        case 3:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 0:
@@ -145,13 +159,13 @@ int Monitor::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 4;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 4;
     }
     return _id;
 }

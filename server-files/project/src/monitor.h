@@ -18,6 +18,9 @@ public:
     C_ATTR(patients, :Local)
     void patients(Context *c, const QString &id);
 
+    C_ATTR(trends, :Path :Global)
+    void trends(Context *c);
+
 
 private:
     C_ATTR(End, :ActionClass("RenderView"))

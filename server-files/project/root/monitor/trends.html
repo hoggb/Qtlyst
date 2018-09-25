@@ -26,20 +26,11 @@
       (function() {
         var div = document.getElementById('embed');
         var engine = new QmlWeb.QMLEngine(div);
-        engine.loadFile('../../qml/PatientView.qml'); // see also engine.loadQML
+        engine.loadFile('../../qml/TrendsView.qml'); // see also engine.loadQML
         engine.start();
         console.log(engine.rootObject);
       })();
 
-
-      //get ID that was passed to the url
-      {% for patient in patients %}
-        var id = "{{patient.id}}";
-        var name = "{{patient.name}}";
-      {% endfor %}
-
-
-      document.getElementsByClassName("Text")[0].childNodes[0].innerHTML = "Name: " + name + "\nId: " + id;
     </script>
   </body>
 </html>

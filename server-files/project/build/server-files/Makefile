@@ -87,6 +87,8 @@ DIST          = ../../root/embed.html \
 		../../root/qml/dummydata.js \
 		../../root/qml/PatientView.qml \
 		../../root/static/js/DOMtests.js \
+		../../root/qml/TrendsView.qml \
+		../../root/monitor/trends.html \
 		/home/hoggb/Qt5.9.5/5.9.5/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/hoggb/Qt5.9.5/5.9.5/gcc_64/mkspecs/common/unix.conf \
 		/home/hoggb/Qt5.9.5/5.9.5/gcc_64/mkspecs/common/linux.conf \

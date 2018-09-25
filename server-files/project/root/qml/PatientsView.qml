@@ -10,7 +10,7 @@ Item{
     Column{
         id: c1
         Repeater{
-            model: Patients.returnDummyData().length / 2;
+            model: 4;
             Rectangle{
                 id: container
                 width: (rootItem.width / 2) - 20; height: 200;
@@ -53,7 +53,7 @@ Item{
     Column{
         id: c2
         Repeater{
-            model: Patients.returnDummyData().length / 2;
+            model: 4;
             Rectangle{
                 id: container2
                 width: (rootItem.width / 2) - 20; height: 200;
