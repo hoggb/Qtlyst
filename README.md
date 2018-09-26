@@ -64,4 +64,6 @@ localhost:3000/monitor/patients/{patient_id}.  As of now, the unique ID is simpl
 but ideally we would have some secure and unique UUID for each patient.
 A sqlite database is used to fetch patient data, and uses the {patient_id}
 argument as a value for lookup across HTTP requests, so we know we are displaying
-the correct patient.     
+the correct patient.
+
+Trends prototype progress can be viewed at localhost:3000/monitor/trends.
