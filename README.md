@@ -12,7 +12,8 @@ Cutelyst (follow install instructions there):
 
 https://github.com/cutelyst/cutelyst/wiki/Installing-Cutelyst
 
-QMLWeb (download should not be necessary, as all engine files are included in this project):
+QMLWeb (Follow install instructions there.  Clone and then npm install && npm run
+        build.  I used Node v8.10.0 and NPM v3.5.2):
 
 https://github.com/qmlweb/qmlweb
 
