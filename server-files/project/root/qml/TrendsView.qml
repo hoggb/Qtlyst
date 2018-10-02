@@ -70,7 +70,7 @@ id: root
 
     }
 
-    //Names
+    //Parameters
     Column{
         id: c1
         anchors.top: topRow.bottom
@@ -132,7 +132,6 @@ id: root
     }
 
     //Data
-
     ScrollView{
     id: scrollView1
     property bool selected: false
@@ -277,6 +276,7 @@ id: root
     }
     }
 }
+
 
 
 
